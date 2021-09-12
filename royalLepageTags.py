@@ -7,5 +7,7 @@ ROYAL_LEPAGE_TAGS = {
   "price":["span", { "class" : "title title--h1 price"}],
   "featureList":["ul", { "class" : "property-features-list"}],
   "featureLabel":["span", { "class" : "label"}],
-  "featureValue":["span", { "class" : "value"}]
+  "featureValue":["span", { "class" : "value"}],
+  "averageIncomeContainer":["div", { "class" : "demostats-item--avg-household-income"}],
+  "averageIncome":["div", { "class" : "card__body"}],
 }

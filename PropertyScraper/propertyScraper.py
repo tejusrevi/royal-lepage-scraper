@@ -38,10 +38,11 @@ def scrapeData(soup):
   parkingType = scrapePropertyFeature(soup, "parking-type")
   numParking = scrapePropertyFeature(soup, "no.-of-parking-spaces")
 
-  ##############################
+  averageIncome = scrapeAverageIncome(soup)
+
   return [address, postCode, latitude, longitude, beds, baths, price, 
     buildingStyle, buildingType, buildingDevelopment, buildingExteriorFinish,  buildingFirePlace, buildingHeatingType, buildingHeatingFuel, buildingCoolingType, 
-    propertyOwnershipType, propertyType, parkingType, numParking]
+    propertyOwnershipType, propertyType, parkingType, numParking, averageIncome]
 
 def getPropertyData(url):
   listingsData = []
@@ -95,3 +96,7 @@ def scrapePropertyFeature(soup, feature):
   for featureNode in featureNodeList:
     if featureNode.find(*ROYAL_LEPAGE_TAGS["featureLabel"]).getText()[0:-1].replace(" ", "-").lower() == feature:
       return featureNode.find(*ROYAL_LEPAGE_TAGS["featureValue"]).getText()
+
+def scrapeAverageIncome(soup):
+  if soup.find(*ROYAL_LEPAGE_TAGS["averageIncomeContainer"]):
+    return soup.find(*ROYAL_LEPAGE_TAGS["averageIncomeContainer"]).find("div").find("span").getText().strip()[1:].replace(",","")

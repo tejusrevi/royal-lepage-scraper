@@ -25,7 +25,7 @@ def writeToCSV(filename, listingUrls):
     writer = csv.writer(csvfile, delimiter=',')
     writer.writerow(['url', 'address', 'postCode', 'latitude', 'longitude', 'NumBeds', 'NumBaths', 'price',
       'buildingStyle', 'buildingType', 'buildingDevelopment', 'buildingExteriorFinish', 'buildingFirePlace', 'buildingHeatingType', 'buildingHeatingFuel', 'buildingCoolingType', 
-      'propertyOwnershipType', 'propertyType', 'parkingType', 'numParking'])
+      'propertyOwnershipType', 'propertyType', 'parkingType', 'numParking', 'averageIncome'])
     for i in listingUrls:
       if i is not None:
         writer.writerows([i])
